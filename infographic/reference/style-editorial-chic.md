@@ -1,14 +1,43 @@
-# VOGUE Editorial Chic 极度戏剧先锋杂志 (Magazine Editorial)
+# 📖 时尚大刊与非对称 VOGUE 风 (Editorial Chic & Editorial Magazine)
 
-你的画布必须具备一种《VOGUE》或者纽约曼哈顿先锋艺术画廊的冷酷报导感。没有任何冗杂的色彩和修饰，只要极端的数据压迫力。
+这是最考验排版底蕴、也是最容易让人一眼觉得满屏“昂贵奢侈”的经典 VOGUE / Kinfolk 杂志排版风格。如果想要呈现年度重磅调查报告、高端生活品质数据、以及时尚美妆品牌趋势分析，这种风格具有毁灭性的视觉降维打击力。它甚至可以像艺术展海报一般被打印张贴。
 
-## 📍 核心视觉法则 (Aesthetics)
-- **剧院光影舞台 (Theatrical B&W)**：色调几乎被封印在刺眼的纯白背景 `#FFF` 与极黑纯度 `#08080A` 的对抗里，这让人觉得你发布的是史诗级重磅。
-- **克莱斯勒纯金斩 (Gold/Blood Splice)**：画面极其大面积的黑与白之中，突然被一根甚至细到 `1px`，但长达半个屏幕的血红/赤红线条 `#D30000` 割裂，或者是一小个绝对明亮的 克莱斯勒金色 `#D4AF37` 方块填充，成为整屏画芯。
-- **变态比例拉扯字体 (Extreme Editorial Fonts)**：无视可读性！大标题需要那种纵向往死里压扁/横向往死里拉长的无情无衬线大写英文字（直接拉取 Google Fonts 神级杂志系 `Bebas Neue`, `Anton`），搭配下方被无限缩小只当做注释花纹的打字机风格字体（`Space Mono` 或 `IBM Plex Mono`）。
+## 📍 :root 极强对比与戏剧性变量
+这里的颜色不再为信息服务，而是为气氛服务。大量的灰度留白、突如其来的强戏反差色卡是唯一标准：
 
-## 🛠 原生 CSS 数据绘图大招 (CSS Visaul Hacks)
-不需要 AntV，因为你画的是前卫数据观念艺术，不需要规矩：
-- **巨大视网膜割裂 (Retina Shatter)**：最大的 KPI 指标直接干到 `font-size: 240px; line-height: 0.7; letter-spacing: -8px`！直接把它铺在画面的底层作为一种背景水纹或者巨大切断物。而所有详实数据只能在它的夹缝里生存。
-- **金融透骨子弹图 (Bullet Grid Rules)**：别留圆角 `border-radius: 0`！直接使用 CSS Grid，把长短不一的黑色/红色细直棍形图表紧密地塞在只靠 `border-bottom: 1.5px solid #000` 兜底的数据行里，制造出穿透纸背的高定报表感。
-- **非中轴线失衡 (Diagonal / Off-Axis)**：部分信息容器，你要运用 `margin-left: -50px; transform: rotate(-3deg)` 这些绝对非对称的设计逼近视觉危险边缘，这才是打破刻板无聊 AI 痕迹的最强武器！
+```css
+:root {
+  /* 基础底色如泛黄宣纸或纯正灰泥 */
+  --bg-editorial: #F5F3ED; /* 一种高级燕麦白 */
+  --bg-editorial-dark: #1F1F1E; /* 极其高级的灰黑色用于某些深色插叙块 */
+
+  /* 最具辨识度的重磅正红或墨绿核心强调色 */
+  --accent-chic: #D13438; /* 时装周级别的纯正朱砂红 */
+  --accent-chic-secondary: #0A3C2B; /* 老派英国赛车绿 */
+  
+  /* 完全是黑天鹅般的黑白强对比压制 */
+  --text-chic-dark: #000000;
+  --text-chic-light: #F5F3ED; 
+  --text-chic-muted: #8E8A83;
+  
+  --border-chic: 1px solid #E2DEC8; /* 用于极致纤细的排版切割线 */
+}
+```
+
+## 📍 重度失谐的极致排版 (Extreme Typographic Contrast)
+- **字体栈戏剧对立**：核心灵魂是**极其昂贵典雅的古典衬线体**搭配**极简瘦弱的现代无衬线体**！
+  主标题推荐使用：`Playfair Display, Bodoni, "Times New Roman", serif`。
+  正文和数字说明使用：`Inter, Helvetica, sans-serif`。
+- **巨大的比例失衡**：标题必须夸张巨大（超过页面 1/3 的空间），犹如巨龙横卧；并且使用极简极其短小的副词配图作为强烈对比对立面。
+  `font-size: clamp(5rem, 18vw, 15rem); font-style: italic;`（让最大的衬线体斜体跨越半屏）
+  `line-height: 0.9; letter-spacing: -0.05em; margin-bottom: 0px;`
+
+## 📍 不合常理的空间错落法 (Asymmetric Editorial Rules)
+- 这不是“互联网网页”。它的排版不要中规中矩地对齐（除非是非常严苛的两端对齐或者左右分割）。
+- 绝不要把所有的主体内容挤在中心。要产生“错层”：左侧放置一个超级大数字 `01.`（字号 150px），它右侧很远的地方才开始浮现纤细的解释文本和极小的 `8px` 数据条。留白大如海洋。
+- 在页面中横叉一条贯穿整个屏幕 100% 宽度的 `--border-chic` 横条黑线或虚线，作为纯粹的装饰。这能让视觉呼吸产生断点和起调。
+
+## 📍 时装秀般的美术数据表达 (High-Fashion Graphs)
+不要用常规柱状图去画数据报表！！
+- 它们可以是用极不规则的不规则圆、或者细如秀发（`1px`）的进度直线配合小小的红色菱形方块来进行提示。数据本身变成了文字版面设计的一部分。
+- 一眼望去，不仅是数据展报，它简直是 1960 年代米兰的一张绝版时装杂志内刊。

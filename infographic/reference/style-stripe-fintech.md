@@ -1,15 +1,47 @@
-# Stripe 金融科技明亮风 (Stripe Fintech Light)
+# 💳 Stripe 金融科技明亮风 (Fintech Clean & Pop)
 
-这是硅谷当今最高级别的明亮商业/金融科技（Fintech）官网审美。极其克制的高级纯白画布、顶级的空气流体渐变以及超高昂贵的丝滑阴影。
+抛弃传统的“廉价数据图表”，这是为最顶级的 SaaS 公司（如 Stripe、Linear）量身定做的极高转化率视觉方案。它要求极度纯净的白色背景、克制且高饱和的点缀色、以及如同真丝一样顺滑的多重弥漫阴影。
 
-## 📍 核心视觉法则 (Aesthetics)
-- **绝对净流画布 (Pure Void)**：放弃一切暗黑模式。画布背景必须是令人发指的纯白 `#FFF` 或者极淡的高冷灰白 `#FAFAFC`，不要任何网格。
-- **神迹流体渐变 (Mesh Radiance)**：不能用大红大绿铺满页面，而是在背景中极其隐秘的局部（比如角落或主标题下方），用 CSS 放一个放大了 `200%`、模糊度极高 `filter: blur(80px)`、透明度只剩 `30%` 的极高纯净度冷暖交融渐变斑点（如 活力紫 `#635BFF` 融化进 冰清蓝 `#00D2FF`）。
-- **极度昂贵投影 (Silky Shadows)**：所有的白色卡片浮在白色底面上，不要用生硬的 Border，而是使用多重扩散的、长达百像素的高雅阴影：`box-shadow: 0 50px 100px -20px rgba(50,50,93,0.08), 0 30px 60px -30px rgba(0,0,0,0.04);`，让卡片飘起来！
-- **商业精英排版 (Elite Typography)**：字体永远不要出戏，锁定极致干净的商业极客字体 `Inter` 或 `Roobert`。正文字体颜色不能是死黑，必须是高端的深瓦灰色 `#32325D`。
+## 📍 :root 神级全局变量
+必须将以下顶级硅谷 SaaS 调色板植入 `:root` 中全盘使用，绝不要在代码里乱写十六进制颜色的硬编码。
 
-## 🛠 原生 CSS 数据绘图大招 (CSS Visaul Hacks)
-你画的金融数据图表必须如同艺术品一样纯净：
-- **微渐变能量柱 (Gradient Bars)**：你的纯 CSS 柱状图不可以是单色的。每个长条 `div` 应该拥有类似 `linear-gradient(135deg, #00C9FF 0%, #92FE9D 100%)` 的高明度活力渐变色，外加一点点极微弱的彩色光晕。
-- **高知留白网格 (Breathing Grids)**：不要把所有数据挤在一起！每个数据的 `.card` 里留出至少 `padding: 40px`。不要生硬的线框，如果想要切分，用极细雅的浅灰线 `border-bottom: 1px solid #E6E6EB;`。
-- **点睛药丸标签 (Pill Badges)**：用圆角形 `border-radius: 999px; background: rgba(99, 91, 255, 0.1); color: #635bff; padding: 4px 12px; font-weight: 600;` 做高亮对比说明，极其硅谷！
+```css
+:root {
+  /* 基础底色：极度剔透的亮调 */
+  --bg-canvas: #F7F9FC; /* 最底层的极浅灰蓝底色，而不是死白 */
+  --bg-surface: #FFFFFF; /* 卡片的纯白底色 */
+  
+  /* 核心高饱和活力突刺色 (Stripe-esque) */
+  --accent-primary: #635BFF; /* 极客紫蓝，绝对耀眼 */
+  --accent-secondary: #00D4FF; /* 青蓝渐变协同色 */
+  
+  /* 信息展示色：极大反差层次 */
+  --text-display: #0A2540; /* 标题采用极深的海军蓝，显得极其贵气且硬核 */
+  --text-body: #425466; /* 正文使用高对比度但不出戏的灰蓝 */
+  --text-muted: #8792A2;
+  
+  /* 最重要的：顶级 SaaS 多重弥散空间悬浮阴影 */
+  --shadow-fintech: 0 50px 100px -20px rgba(50, 50, 93, 0.15),
+                    0 30px 60px -30px rgba(0, 0, 0, 0.2), 
+                    inset 0 -2px 6px 0 rgba(10, 37, 64, 0.05);
+  
+  --border-subtle: 1px solid rgba(0, 0, 0, 0.04);
+  --radius-card: 24px;
+}
+```
+
+## 📍 字体与暴力排版系统 (Typographic Scale & Harmony)
+- **字体栈极简克制**：必须使用极具专业感的无衬线体（San Francisco 风格），例如强制设定：`font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;` 
+- **大字暴击 (Clamp Headers)**：数据海报的标题必须极其显眼（带攻击性），使用 `font-size: clamp(3rem, 8vw, 5rem);` 以及超紧致字距 `letter-spacing: -0.04em;`，标题行高控制在绝对紧迫的 `line-height: 1.05;`。
+- **纯粹字重拉扯**：标题字体极粗 (`font-weight: 800`) 与正文副标题变极其纤细 (`font-weight: 400; font-size: 1.1rem`) 并排出现，形成“大与微小”的强烈张力对拉。
+
+## 📍 空间解构与像素级网格 (Spatial Metrics)
+- 放弃传统的上中下流式排版；
+- 容器必须采用极其严加防范的边距：`padding: 64px 80px;`（确保内视口宽阔得能跑马）。
+- 内容卡片之间采用绝对严谨的 Grid 布局 (`gap: 32px`)，卡片悬浮使用 `--shadow-fintech`。
+
+## 📍 巅峰图表捏造术 (CSS Visual Hacks)
+1. **带光晕的背景 (Glow Meshes)**：在 `--bg-canvas` 基础上，创建一个绝对定位 (`position: absolute; z-index: 0;`) 的超大球体，设定背景色为 `--accent-primary` 加上 `filter: blur(200px); opacity: 0.15;`，这样干净的画布上会隐隐透出史诗级蓝紫光晕。
+2. **纯 CSS 渐变折线图 (Data representation)**：
+   不要引入 JS 库！利用 `mask-image` 手工切割 `linear-gradient`，或者使用连续 `div` 排列成精美的纯色（或高亮蓝渐变色）柱状图，顶部叠加强阴影凸显 3D 数据感知。
+3. **标签的高亮设计 (Pill Tags)**：任何数据标记、增幅（如 "+24.5%"）都要做成极具精致感的微型胶囊：`padding: 4px 12px; border-radius: 999px; background: rgba(99, 91, 255, 0.1); color: var(--accent-primary); font-weight: 700;`。

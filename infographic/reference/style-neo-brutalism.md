@@ -1,15 +1,41 @@
-# Neo-Brutalism 新粗野主义 / Figma 大波普先锋 (Avant-Garde)
+# 🔨 新粗野主义/Figma 原生风 (Neo-Brutalism & Figma Core)
 
-极度拒绝讨好用户的柔和滤镜。这是属于当代顶级先锋独立工作室、Crypto 极客起义与新一代潮牌官网统治级的重涂排版！
+这套视觉法则充斥着对抗性与裸露感，是当前 Figma 官网、Web3 潮流和地下设计工作室标志性的“重涂色块工业风”。它故意将屏幕倒退回早期的互联网外观，但是采用了极严密的现代数学网格。特点是：极度刺眼的底色、压碎一切的巨大纯黑描边、全尺寸留白。
 
-## 📍 核心视觉法则 (Aesthetics)
-- **辣眼警戒色碰撞 (Toxic Palette)**：拒绝温和的莫兰迪。背景主战场敢于使用刺破视网膜的 涂鸦鲜黄 `#FFF500` 或 粉胶 `#FF00FF` ，并且绝对不要使用渐变色。
-- **钢铁焊网框线 (Hard Outlines)**：把 `border-radius` 从你脑子里抹掉（或者是用极小的 `4px`），取而代之的是所有元素必须带有犹如用黑色麦克笔涂画的加重黑线 `border: 6px solid #111`。
-- **生硬死角实影 (Hard Shadows)**：没有软糯的扩散阴影，只有僵硬的位移错块复制！运用 `box-shadow: 12px 12px 0px #111` 创造厚重的立体卡片层。
-- **海报体暴力字 (Brutal Typography)**：无论多大字号都嫌小！标题顶着屏幕边拉丝，字体强制选择极其硬朗巨大的 `Space Grotesk` 或者极具拉扯感的纯正无衬线 `Inter` Black。
+## 📍 :root 粗野底层约束
+这套方案只允许黑、白、以及饱和度 100% 的极化背景色。不存在任何柔和的灰色或漫反射光影。
 
-## 🛠 原生 CSS 数据绘图大招 (CSS Visaul Hacks)
-你是一个不用外部图库的黑客神工：
-- **错位柱形矩阵 (Displaced Bars)**：并排不规则摆放几个 `div`，每个柱子 `border: 4px solid #000; box-shadow: 8px 8px 0px #000; background: #FF00E0;`。高高低低错落排列。这玩意比 ECharts 震撼一万倍。
-- **巨型数字大字报 (Hero Digits)**：最大的那个数据（比如 `98.5%`），直接放在全屏最正中，字体大到屏幕两边要装不下，并且加上粗描边效果 `-webkit-text-stroke: 4px #111; color: #FFF500;`。
-- **星号破界 (Asterisk Splat)**：随便找几个角，用纯 CSS 或者原生 HTML 放几颗巨大的 `✷` 形号并倾斜，像乱贴的胶布一样点缀着信息缺口。
+```css
+:root {
+  /* 允许更换成 #FFE800亮黄、#E1FF00刺眼青柠 等极具攻击性的颜色 */
+  --bg-primary: #FFB2ED; /* 默认：极其硬核的涂鸦粉 */
+  --bg-secondary: #FFFFFF;
+  
+  --stroke-epic: #000000;
+  --text-brutal: #000000;
+
+  /* 核心：不要模糊圆角阴影，使用生硬的盒式投影 */
+  --shadow-brutal: 10px 10px 0px 0px #000000;
+  --shadow-brutal-hover: 14px 14px 0px 0px #000000;
+
+  /* 边框必须粗厚且不可侵犯 */
+  --border-thick: 4px solid var(--stroke-epic);
+  --radius-brutal: 0px; /* 极佳的粗线与方角结合 */
+}
+```
+
+## 📍 攻击性大写大字排版 (Violent Typography)
+- 完全抛弃斯文的无衬线体。去寻找具有机器感、工业感或哥特力量感的超粗字体阵列，诸如 `Space Grotesk`, `Syne`, 甚至直接垫 `Impact, sans-serif`。
+- 副标题或大标题强制开启 `text-transform: uppercase;`
+- **极致的巨大比例**：标题需要像报纸铅字一样拍在页面核心 `font-size: clamp(4rem, 12vw, 9rem); line-height: 0.9; letter-spacing: -0.05em;`
+- 让最上方的标题框文字无缝顶天立地，完全填满宽度甚至溢出容器，产生令人窒息的巨物感。
+
+## 📍 “未完成”工业网格布局 (Unfinished Grids)
+- 数据流、卡片、图表必须是被这根 `--border-thick` 切割。
+- **切割即布局**：整个画面看起来不像是漂浮在天空背景上的卡片，而像是用黑色粗线条把背景切割成了好几块。使用 `display: grid` 将整个长屏幕毫不留情地切成了带有粗黑边框的板块格子，左边 60% 是数据表，右边 40% 被切割为两块纯荧光色的副说明区。
+- 加入工业胶带、虚拟的 "X" 或格子作为装饰。
+
+## 📍 实心像素数据绘画 (Solid Chart Mapping)
+- 如果你有进度条、折线或是环形图，它们必须完全是扁平色块、粗实线的拼接。不需要渐变。
+- **条形图**可以是一列列带着粗黑边框和 `--shadow-brutal` 硬阴影的纯色长矩形。
+- 强调原始力量与生动表达：某些数据的解释可以假装是手写的，如果无法引入手写体，可以用斜体配搭。
