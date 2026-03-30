@@ -38,7 +38,24 @@ const targetHeight = heightArg ? parseInt(heightArg) : 1600;
   console.log('⏳ 挂起等待视觉驻留与微动效落成 (3 秒)...');
   await page.waitForTimeout(3000); 
 
-  console.log(`📸 全景无损画板按预设比例强取中...`);
+  // 暴力解决排版外溢导致横版截图被截断的问题：读取真实的滚动宽高度并强制撑开 Viewport！
+  const { scrollWidth, scrollHeight } = await page.evaluate(() => {
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+    // 强制消除可能导致水平滚动条截断的环境约束
+    document.documentElement.style.overflowX = 'visible';
+    return {
+      scrollWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
+      scrollHeight: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)
+    };
+  });
+
+  const finalWidth = Math.max(targetWidth, scrollWidth);
+  const finalHeight = Math.max(targetHeight, scrollHeight);
+
+  await page.setViewportSize({ width: finalWidth, height: finalHeight });
+
+  console.log(`📸 全景无损画板按预设比例强取中 (实际捕获大小: ${finalWidth}x${finalHeight})...`);
   await page.screenshot({ 
     path: outputFile, 
     fullPage: true, 
